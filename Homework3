@@ -1,0 +1,142 @@
+from collections import deque
+import random
+
+
+
+# Первое задание
+
+
+some_list=[6,77,54,67,45,87]
+c=0
+while c<1:
+    for e in some_list:
+        print(e)
+        c+=1
+
+
+# Второе задание
+
+namera=[]
+i=0
+while i >=0:
+    number=int(input('Введите два числа'))
+    namera.append(number)
+    print(sum(namera))
+    i+=1
+    if number==0:
+        break
+
+# Третья задание
+
+asfalt_kg=input('Киллограграм асфальта')
+obrat=asfalt_kg[::-1]
+print(obrat)
+
+
+# Четвертое задание
+
+s='Power rangers'
+print(s[3])
+print(s[-2])
+print(s[:5])
+print(s[:-2])
+print(s[2::2])
+print(s[::-1])
+print(len(s))
+
+#Пятое задание в котором нужно поманять местами строк при выводе
+print('Это пример замены местами строка')
+w = 'Impending doom approaches!'
+d = deque(w)
+d.rotate(11)
+print(''.join(d))
+d.rotate(-21)
+print(''.join(d))
+
+#Шестое задание калькулятор
+
+while True:
+    s = input("Выберите Знак (+,-,*,/): 'Калькулятор закончится если ввести цыфру 0'")
+    if s == '0':
+        break
+    if s in ('+', '-', '*', '/'):
+        x = float(input("x="))
+        y = float(input("y="))
+        if s == '+':
+            print("%.2f" % (x+y))
+        elif s == '-':
+            print("%.2f" % (x-y))
+        elif s == '*':
+            print("%.2f" % (x*y))
+        elif s == '/':
+            if y != 0:
+                print("%.2f" % (x/y))
+            else:
+                print("Деление на ноль!")
+    else:
+        print("Неверный знак операции!")
+
+
+
+#Седмую матемагия не понял
+#Восьмую тоже
+
+# Задача Две желтые летающие овцы с некоторыми изменениями
+'''1)Можно играть несколько играков 
+    2) Есть несколько уровень сложности в котором количество попыток выберается пользователем
+     3) В конце обявляет имя ползователя который победил'''
+  
+
+
+print('Я Биба и я загадываю случайное число а вы должны угадать ')
+number=random.randint(1,100)
+#print(number)-Чтобы увидет рандомное число
+
+# В ЭТОЙ ИГРЕ НЕСКОЛЬКО КОЛИЧЕСТВО УЧАСТНИКОВ КОТОРЫЕ ДОЛЖНЫ УГАДАТЬ ЦЫФРУ КОТОРЫЙ ЗАГАЛ КАМЬПЮТЕР
+# Число который будет ввести пользователь
+user_number=None
+count=0
+
+# ТАКЖЕ ЕСТЬ ТРИ УРОВНИ СЛОЖНОСТИ ДАЮЩИЕ ПОПЫТКИ ЧТОБЫ УГАДАТЬ
+''' В 1 ом=10 попыток
+     В 2 ом =5 попыток
+     В 3 ем =3 попытки  '''
+levels={1:10,2:5,3:3}
+level=int(input('Выберите уровень сложности их три :'))
+max_count =levels[level]
+
+
+# Пользователь вводит количество участников
+
+user_count=int(input('Введите количество участников'))
+#этот пустой лист сохроняет количество участников
+users=[]
+for i in range(user_count):
+    user_name=input(f'Введите имя участника{i}:')
+    users.append(user_name)
+    print(users)
+
+#Пока нету победителя
+is_winner=False
+winner_name=None
+while not is_winner:
+    count+=1
+    if count>max_count:
+        print('Все участники проиграли так как не смогли угадать за представленные попытки')
+        break
+    print(f'Попытка №{count}')
+    for user in users:
+        print(f'Ход переходит к пользователю{user}')
+        #Код который предлагет ввести число
+        user_number=int(input("Введите число"))
+        if user_number==number:
+            is_winner=True
+            winner_name=user
+            break
+        elif number<user_number:
+            print('Вы близко но Ваше число больше загаданого  ')
+        elif number>user_number:
+            print('Ваше число меньше загаданного ,но вы близко ')
+else:
+    print('Дааа черт побери вы победите ')
+    print('Вам везет ')
